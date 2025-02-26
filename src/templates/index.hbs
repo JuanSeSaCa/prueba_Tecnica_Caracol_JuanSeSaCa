@@ -1,0 +1,15 @@
+<header>
+    <img src="{{data.logo.src}}" width="{{data.logo.width}}" alt="Logo">
+</header>
+
+<nav>
+    {{#each data.breadcrumbs}}
+        <a href="{{this.href}}">{{this.body}}</a> >
+    {{/each}}
+</nav>
+
+<h1>{{data.headline}}</h1>
+<p>{{data.subHeadline}}</p>
+
+<button id="playAudio">▶ Escuchar Audio</button>
+<audio id="audioPlayer" src="{{data.audioPlayer.url}}" hidden></audio>

@@ -1,0 +1,46 @@
+
+
+Dependencias de Node.js
+node_modules
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+stacktrace.log*
+
+# Archivos de entorno y configuración
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env*.local
+
+# Archivos de compilación y caché
+build/
+dist/
+.cache/
+.next/
+.out/
+.vercel/
+
+# Archivos de configuración de Vercel
+.vscode/
+.vercel/
+
+# Archivos de configuración del sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+*.swo
+
+# Archivos de cobertura de pruebas
+coverage/
+*.lcov

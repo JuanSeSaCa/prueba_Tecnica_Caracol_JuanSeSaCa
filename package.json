@@ -11,6 +11,8 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
+    "express-handlebars": "^8.0.1",
+    "less-middleware": "^3.1.0",
     "vercel": "^41.2.2"
   },
   "devDependencies": {

@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+  header {
+    background: #003366;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: #003366;
+    text-decoration: none;
+    padding: 5px;
+  }
+  
+  button {
+    background: #FFD700;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }

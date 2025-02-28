@@ -1,0 +1,15 @@
+<section class="lead">
+    <div class="carousel">
+        {{#each lead}}
+            <div class="carousel-item">
+                {{#if video}}
+                    <video controls>
+                        <source src="{{video.src}}" type="{{video.type}}">
+                    </video>
+                {{else}}
+                    <img src="{{image.src}}" alt="{{alt}}">
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
+</section>

@@ -12,4 +12,7 @@ router.get("/", (req, res) => {
   res.render("index", { data });
 });
 
+// Ruta para servir imágenes, videos u otros archivos estáticos
+router.use("/public", express.static("public"));
+
 module.exports = router;

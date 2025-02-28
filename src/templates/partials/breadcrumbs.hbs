@@ -1,0 +1,6 @@
+<nav class="breadcrumbs">
+  {{#each breadcrumbs}}
+    <a href="{{this.href}}">{{this.body}}</a> 
+    {{#unless @last}} > {{/unless}}
+  {{/each}}
+</nav>

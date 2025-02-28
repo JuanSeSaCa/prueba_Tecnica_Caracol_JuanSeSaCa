@@ -23,7 +23,9 @@
           "height": "88",
           "webpSrc": "https://caracoltv.brightspotcdn.com/dims4/default/d8cdd19/2147483647/strip/true/crop/2732x240+0+0/resize/1000x88!/format/webp/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2F0a%2Fbd%2F76a1b6b94c6882d1da108e1caf5a%2Fsospechosamente-ligh-2x.jpg",
           "webpSrcset": null
+          
         }
+        
       }
     ],
     "actions": [{
@@ -123,7 +125,11 @@
         "height": "765",
         "webpSrc": "https://caracoltv.brightspotcdn.com/dims4/default/7d43afc/2147483647/strip/true/crop/5359x4097+0+2109/resize/1000x765!/format/webp/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2F6e%2Fc2%2F86e0c9bc4342ba876ac7ddd601c7%2Fdesktop-prueba.jpg",
         "webpSrcset": null
-      }
+        
+      },
+      "video": {
+        "src": "https://www.youtube.com/embed/T_QGUNF0CNA?si=KUQaTCXBqEGbE3G6" ,
+        "type": "video/mp4"}
     }],
     "headline": "Tato es el mejor hombre del mundo; por favor, perdónalo",
     "subHeadline": "A nosotros también nos tocó el despecho, también celebramos pequeños triunfos de la adultez y también a veces nos quedan 3 góticas en el bizcocho.<br/>No nos echen la culpa si se vuelven adictos a este podcast.",

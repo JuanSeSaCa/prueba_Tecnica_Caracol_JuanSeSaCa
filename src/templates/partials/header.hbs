@@ -1,0 +1,26 @@
+
+<header class="header">
+  <div class="header__logo">
+    <a href="{{logo.href}}">
+      <img src="{{logo.src}}" alt="{{logo.alt}}" width="{{logo.width}}" height="{{logo.height}}">
+    </a>
+  </div>
+
+  <nav class="header__nav">
+    <ul>
+      {{#each navigation.[0].items}}
+        <li>
+          <a href="{{this.href}}" {{#if this.isCurrent}}class="active"{{/if}}>{{this.text}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </nav>
+
+  <div class="header__social">
+    {{#each social.[0].items}}
+      <a href="{{this.href}}" target="_blank" class="social-icon {{this.socialService}}">
+        <i class="icon-{{this.socialService}}"></i>
+      </a>
+    {{/each}}
+  </div>
+</header>

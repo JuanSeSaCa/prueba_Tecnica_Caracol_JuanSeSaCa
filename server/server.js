@@ -10,12 +10,8 @@ const PORT = process.env.PORT || 3000;
 app.use(
   lessMiddleware(path.join(__dirname, "../src/public/less"), {
     dest: path.join(__dirname, "../src/public/css"),
-    force: true,
-    preprocess: {
-        path: function (pathname, req) {
-          return pathname.replace("/css/", "/less/");
-        },
-      },
+    force: true
+   
   })
 );
 

@@ -6,30 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/main.js"></script>
+    
 </head>
 
 <body>
     {{> header}}
-    <main>
+     <main>
         {{> breadcrumbs}}
-
         {{> pageLead}}
-
         {{> lead}}
-
-        <section class="content">
-            <h1>{{headline}}</h1>
-            <p>{{{subHeadline}}}</p>
-
-            {{> audioPlayer}}
-
-            {{> actions}}
-        </section>
-
         {{> hotTopics}}
+        {{> audioPlayer}}
+        {{> actions}}
+        {{> socialLinks}}
     </main>
     {{> footer}}
+     <script src="/js/main.js"></script>
 
 </body>
 

@@ -7,7 +7,8 @@
                         <source src="{{video.src}}" type="{{video.type}}">
                     </video>
                 {{else}}
-                    <img src="{{image.src}}" alt="{{alt}}">
+                    <img src="https://cors-anywhere.herokuapp.com/{{image.src}}" alt="{{alt}}" width="{{image.width}}" height="{{image.height}}">
+
                 {{/if}}
             </div>
         {{/each}}

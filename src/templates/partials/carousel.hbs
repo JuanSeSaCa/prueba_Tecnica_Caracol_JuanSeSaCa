@@ -1,0 +1,17 @@
+<div id="carouselContainer" class="carousel">
+    <button class="carousel-prev">‹</button>
+    
+    <div class="carousel-inner">
+        {{#each lead}}
+            <div class="carousel-item {{#if @first}}active{{/if}}">
+                {{#if video.src}}
+                    <iframe src="{{video.src}}" frameborder="0" allowfullscreen></iframe>
+                {{else}}
+                    <img src="{{image.src}}" alt="{{alt}}" width="{{image.width}}" height="{{image.height}}">
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
+
+    <button class="carousel-next">›</button>
+</div>

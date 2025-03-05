@@ -185,5 +185,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     showSlide(index);
-    setInterval(nextSlide, 5000);
+    // setInterval(nextSlide, 5000);
 });

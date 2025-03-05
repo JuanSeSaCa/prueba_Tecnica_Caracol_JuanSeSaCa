@@ -1,16 +1,26 @@
+{{!-- <p>📌 Debug: ¿Existe lead? {{#if lead}} ✅ Sí {{else}} ❌ No {{/if}}</p> --}}
+
 <section class="lead">
     <div class="carousel">
         {{#each lead}}
-            <div class="carousel-item">
-                {{#if video}}
-                    <video controls>
-                        <source src="{{video.src}}" type="{{video.type}}">
-                    </video>
-                {{else}}
-                    <img src="https://cors-anywhere.herokuapp.com/{{image.src}}" alt="{{alt}}" width="{{image.width}}" height="{{image.height}}">
+        <div class="carousel-item {{#if @first}}active{{/if}}"> <!-- Agrega "active" solo al primer elemento -->
 
-                {{/if}}
-            </div>
+            <!-- Depuración: Mostrar valores -->
+            {{!-- <p> Alt: {{alt}}</p> --}}
+            
+            {{#if video.src}}
+            <p> Video Src: <a href="{{video.src}}" target="_blank">{{video.src}}</a></p>
+            <iframe width="560" height="315" src="{{video.src}}" frameborder="0" allowfullscreen></iframe>
+            {{/if}}
+
+            {{#if image.src}}
+            <img class="carousel-image" src="{{image.src}}" alt="{{alt}}" width="{{image.width}}"
+                height="{{image.height}}">
+
+            {{else}}
+            <p>⚠️ No hay contenido disponible.</p>
+            {{/if}}
+        </div>
         {{/each}}
     </div>
 </section>

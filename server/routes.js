@@ -1,6 +1,7 @@
 const express = require("express");
+const path = require("path");
 const router = express.Router();
-const data = require("./test.json");
+const data = require(path.join(__dirname, "test.json"))
 
 // API que devuelve los datos JSON
 router.get("/api/data", (req, res) => {
@@ -11,8 +12,5 @@ router.get("/api/data", (req, res) => {
 router.get("/", (req, res) => {
   res.render("index", { data });
 });
-
-// Ruta para servir imágenes, videos u otros archivos estáticos
-router.use("/public", express.static("public"));
 
 module.exports = router;

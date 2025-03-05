@@ -42,16 +42,21 @@ document.addEventListener("DOMContentLoaded", async function () {
     const leadContainer = document.querySelector("#lead");
     if (leadContainer && jsonData.lead) {
         const lead = jsonData.lead[0];
-        leadContainer.innerHTML = `
-            <div class="lead-media">
-                ${
-                    lead.video
-                        ? `<iframe src="${lead.video.src}" frameborder="0" allowfullscreen></iframe>`
-                        : `<img src="${lead.image.src}" alt="${lead.alt}" width="${lead.image.width}" height="${lead.image.height}">`
-                }
-            </div>
-        `;
+
+
+        let content = '<div class="lead-media">';
+    
+    if (lead.video && lead.video.src) {
+        content += `<iframe src="${lead.video.src}" frameborder="0" allowfullscreen></iframe>`;
+    } else if (lead.image && lead.image.src) {
+        content += `<img src="${lead.image.src}" alt="${lead.image.alt || 'Imagen sin descripción'}" width="${lead.image.width || 'auto'}" height="${lead.image.height || 'auto'}">`;
+    } else {
+        content += "<p>⚠️ No hay imagen y/o video disponibles.</p>";
     }
+
+    content += "</div>";
+    leadContainer.innerHTML = content;
+}
 
     
     //  Renderizar Hot Topics

@@ -1,36 +1,31 @@
 <header class="header">
-    <div class="header-top">
-        <!-- Menú de navegación -->
-        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-        <a href="/" class="logo">
-            <img src="/images/logo.png" alt="BumBox Logo">
-        </a>
+  <div class="header-top">
+    <div class="nav-container">
+      <!-- Navegación -->
+      {{> navigation}}
 
-        <!-- Redes Sociales -->
-        <div class="social-links">
-            {{#each socialLinks}}
-                <a href="{{href}}" target="_blank" aria-label="{{alt}}">
-                    <img src="{{icon}}" alt="{{alt}}">
-                </a>
-            {{/each}}
-        </div>
+      <!-- Logo -->
+      <a href="{{logo.[0].href}}" class="logo">
+        <img src="{{logo.[0].image.src}}" alt="{{logo.[0].alt}}" width="{{logo.[0].image.width}}"
+          height="{{logo.[0].image.height}}">
+      </a>
     </div>
 
-    <!-- Barra de tendencias -->
-    <nav class="trending-bar">
-        <span class="trending-title">Tendencias:</span>
-        {{#each hotTopics}}
-            <a href="{{href}}">{{text}}</a> |
-        {{/each}}
-    </nav>
 
-    <!-- Menú principal -->
-    <nav class="nav-bar">
-        <ul class="nav-links">
-            {{#each navigation.[0].items}}
-                <li><a href="{{href}}" class="{{#if isCurrent}}active{{/if}}">{{text}}</a></li>
-            {{/each}}
-        </ul>
-    </nav>
+  </div>
+
+
+  <div class="header-bottom">
+    <div clas= "topics-container">
+      <!-- Hot Topics -->
+      {{> hotTopics}}
+      <!-- Redes Sociales -->
+      {{> socialLinks}}
+
+    </div>
+
+
+  </div>
+
+
 </header>
-

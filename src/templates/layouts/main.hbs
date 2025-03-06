@@ -13,14 +13,16 @@
    {{> header}}  <!-- Partial del header -->
     
     <main>
-        <h1 class="headline">{{headline}}</h1>
-        <p class="subHeadline">{{{subHeadline}}}</p>
-        
-        <div class="page-lead">
+
+         <div class="page-lead">
             {{#if pageLead.[0].image.src}}
                 <img src="{{pageLead.[0].image.src}}" alt="{{pageLead.[0].alt}}">
             {{/if}}
         </div>
+        <h1 class="headline">{{headline}}</h1>
+        <p class="subHeadline">{{{subHeadline}}}</p>
+        
+        
 
         {{> carousel}}  <!-- Partial del carrusel -->
         {{> audioPlayer}}  <!-- Partial del reproductor de audio -->

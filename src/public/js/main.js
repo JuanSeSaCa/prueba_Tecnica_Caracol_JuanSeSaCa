@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             .join(" > ");
     }
 
-    
+
     //  Renderizar Page Lead
 
     const pageLeadContainer = document.querySelector("#pageLead");
@@ -36,31 +36,31 @@ document.addEventListener("DOMContentLoaded", async function () {
         `;
     }
 
-    
+
     //  Renderizar Lead con Imagen/Video
-   
+
     const leadContainer = document.querySelector("#lead");
     if (leadContainer && jsonData.lead) {
         const lead = jsonData.lead[0];
 
 
         let content = '<div class="lead-media">';
-    
-    if (lead.video && lead.video.src) {
-        content += `<iframe src="${lead.video.src}" frameborder="0" allowfullscreen></iframe>`;
-    } else if (lead.image && lead.image.src) {
-        content += `<img src="${lead.image.src}" alt="${lead.image.alt || 'Imagen sin descripción'}" width="${lead.image.width || 'auto'}" height="${lead.image.height || 'auto'}">`;
-    } else {
-        content += "<p>⚠️ No hay imagen y/o video disponibles.</p>";
+
+        if (lead.video && lead.video.src) {
+            content += `<iframe src="${lead.video.src}" frameborder="0" allowfullscreen></iframe>`;
+        } else if (lead.image && lead.image.src) {
+            content += `<img src="${lead.image.src}" alt="${lead.image.alt || 'Imagen sin descripción'}" width="${lead.image.width || 'auto'}" height="${lead.image.height || 'auto'}">`;
+        } else {
+            content += "<p>⚠️ No hay imagen y/o video disponibles.</p>";
+        }
+
+        content += "</div>";
+        leadContainer.innerHTML = content;
     }
 
-    content += "</div>";
-    leadContainer.innerHTML = content;
-}
 
-    
     //  Renderizar Hot Topics
-   
+
     const hotTopicsContainer = document.querySelector("#hotTopics");
     if (hotTopicsContainer && jsonData.hotTopics) {
         hotTopicsContainer.innerHTML = jsonData.hotTopics
@@ -78,9 +78,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             .join(" | ");
     }
 
- 
+
     //  Renderizar Audio Player
- 
+
     const audioPlayerContainer = document.querySelector("#audioPlayerContainer");
     if (audioPlayerContainer && jsonData.audioPlayer) {
         const audio = jsonData.audioPlayer[0];
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
     // Configurar Reproductor de Audio
-  
+
     const audioPlayer = document.querySelector("#audioPlayer");
     const playButton = document.querySelector("#playButton");
 
@@ -108,9 +108,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    
+
     //  Configurar Botones de Compartir
-  
+
     const shareButtonsContainer = document.querySelector("#shareButtons");
     if (shareButtonsContainer && jsonData.actions) {
         shareButtonsContainer.innerHTML = jsonData.actions[0].items
@@ -186,4 +186,35 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     showSlide(index);
     // setInterval(nextSlide, 5000);
+
+     // ☰ Toggle de navegación en móviles
+     const menuToggle = document.querySelector(".menu-toggle");
+     const navLinks = document.querySelector(".nav-links");
+ 
+     if (menuToggle) {
+         menuToggle.addEventListener("click", () => {
+             navLinks.classList.toggle("active");
+         });
+     }
+ 
+     // 🔥 Resaltar el enlace activo en la navegación
+     const currentUrl = window.location.href;
+     document.querySelectorAll(".nav-links a").forEach(link => {
+         if (link.href === currentUrl) {
+             link.classList.add("active");
+         }
+     });
+ 
+     // 🔄 Cargar datos dinámicos (ejemplo para headline y subHeadline)
+     fetch("/data.json")  // Asegúrate de que esta ruta sirva tu JSON
+         .then(response => response.json())
+         .then(data => {
+             document.querySelector(".headline").textContent = data.headline || "Título no disponible";
+             document.querySelector(".subHeadline").innerHTML = data.subHeadline || "Descripción no disponible";
+         })
+
+         .catch(error => console.error("Error al cargar JSON:", error));
+        
+
+
 });

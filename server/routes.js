@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
-const data = require(path.join(__dirname, "test.json"))
+const data = require(path.join(__dirname, "../data/test.json"))
 
 // API que devuelve los datos JSON
 router.get("/api/data", (req, res) => {

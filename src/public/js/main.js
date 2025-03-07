@@ -188,12 +188,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     // setInterval(nextSlide, 5000);
 
      // ☰ Toggle de navegación en móviles
-     const menuToggle = document.querySelector(".menu-toggle");
-     const navLinks = document.querySelector(".nav-links");
+     const menuToggle = document.querySelector("menu-toggle");
+     const navLinks = document.querySelector(".navigation ul");
  
      if (menuToggle) {
-         menuToggle.addEventListener("click", () => {
-             navLinks.classList.toggle("active");
+         menuToggle.addEventListener("click", function () => {
+             navLinks.classList.toggle("show");
          });
      }
  

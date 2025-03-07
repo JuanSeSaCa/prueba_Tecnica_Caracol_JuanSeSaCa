@@ -6,31 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/styles.css">
-    
+
 </head>
 
 <body>
-   {{> header}}  <!-- Partial del header -->
-    
+    {{> header}} <!-- Partial del header -->
+    <div class="page-lead">
+        {{#if pageLead.[0].image.src}}
+        <img src="{{pageLead.[0].image.src}}" alt="{{pageLead.[0].alt}}">
+        {{/if}}
+    </div>
+    {{> breadcrumbs}}
+
     <main>
 
-         <div class="page-lead">
-            {{#if pageLead.[0].image.src}}
-                <img src="{{pageLead.[0].image.src}}" alt="{{pageLead.[0].alt}}">
-            {{/if}}
-        </div>
-        <h1 class="headline">{{headline}}</h1>
-        <p class="subHeadline">{{{subHeadline}}}</p>
-        
-        
+        <section class="main-container">
+            <div class="lead">
+                {{> carousel}} <!-- Partial del carrusel -->
+            </div>
+           
+            <div class="lead-description">
+                <h1 class="headline">{{headline}}</h1>
+                <p class="subHeadline">{{{subHeadline}}}</p>
+                {{> audioPlayer}} <!-- Partial del reproductor de audio -->
+                {{> actions}}
 
-        {{> carousel}}  <!-- Partial del carrusel -->
-        {{> audioPlayer}}  <!-- Partial del reproductor de audio -->
-        {{> socialLinks}}  <!-- Partial de redes sociales -->
+            </div>
+
+        </section>
+
     </main>
 
-    {{> footer}}  <!-- Partial del footer -->
-     <script src="/js/main.js"></script>
+    {{> footer}} <!-- Partial del footer -->
+    <script src="/js/main.js"></script>
 
 </body>
 

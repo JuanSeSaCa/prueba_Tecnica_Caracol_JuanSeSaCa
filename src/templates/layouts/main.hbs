@@ -6,36 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
 
 </head>
 
 <body>
     {{> header}} <!-- Partial del header -->
-    <div class="page-lead">
-        {{#if pageLead.[0].image.src}}
-        <img src="{{pageLead.[0].image.src}}" alt="{{pageLead.[0].alt}}">
-        {{/if}}
-    </div>
+    {{>pageLead}}
     {{> breadcrumbs}}
 
-    <main>
+   <main>
 
-        <section class="main-container">
-            <div class="lead">
-                {{> carousel}} <!-- Partial del carrusel -->
-            </div>
-           
-            <div class="lead-description">
-                <h1 class="headline">{{headline}}</h1>
-                <p class="subHeadline">{{{subHeadline}}}</p>
-                {{> audioPlayer}} <!-- Partial del reproductor de audio -->
-                {{> actions}}
 
-            </div>
+    <section class="main-container">
+        <div class="lead id="lead">
+            {{> lead}} <!-- Partial del carrusel -->
+        </div>
 
-        </section>
+        <div class="lead-description">
+            <h1 class="headline">{{headline}}</h1>
+            <p class="subHeadline">{{{subHeadline}}}</p>
+            {{> audioPlayer}} <!-- Partial del reproductor de audio -->
+            {{> actions}} <!-- Botones de compartir -->
+        </div>
+    </section>
+</main>
 
-    </main>
 
     {{> footer}} <!-- Partial del footer -->
     <script src="/js/main.js"></script>

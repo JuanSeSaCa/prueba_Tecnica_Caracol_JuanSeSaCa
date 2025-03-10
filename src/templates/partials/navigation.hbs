@@ -1,7 +1,10 @@
 <nav class="navigation">
     <button class="menu-toggle">☰</button>
-    <ul class="nav-links">
-        {{#each menu}}
-<li><a href="{{this.href}}">{{this.text}}</a></li>        {{/each}}
+    <ul class="nav-links" id="nav-menu">
+        {{#each navigation.[0].items}}
+            <li class="nav-item">
+                <a href="{{this.href}}">{{this.text}}</a>
+            </li>
+        {{/each}}
     </ul>
 </nav>

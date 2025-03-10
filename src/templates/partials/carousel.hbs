@@ -1,24 +1,18 @@
-<div id="carouselContainer" class="carousel">
-    >
-    
+
+{{!-- <p>📌 Debug: ¿Existe lead? {{#if carousel}} ✅ Sí {{else}} ❌ No {{/if}}</p> --}}
+<div id="carousel-container" class="carousel">
     <div class="carousel-inner">
         {{#each lead}}
-           <div class="carousel-item {{#if @first}}active{{/if}}">
-                <!-- Primero se muestra la imagen -->
-                {{#if image.src}}
-                    <img src="{{image.src}}" alt="{{alt}}" width="{{image.width}}" height="{{image.height}}">
-                {{/if}}
-
-                <!-- Luego se muestra el video -->
-                {{#if video.src}}
-                    <iframe src="{{video.src}}" frameborder="0" allowfullscreen></iframe>
-                {{/if}}
-
-
-            </div>
+        <div class="carousel-item {{#if @first}}active{{/if}}">
+            {{#if image.src}}
+                <img src="{{image.src}}" alt="{{alt}}" width="{{image.width}}" height="{{image.height}}">
+            {{/if}}
+            {{#if video.src}}
+                <iframe src="{{video.src}}" frameborder="0" allowfullscreen></iframe>
+            {{/if}}
+        </div>
         {{/each}}
     </div>
     <button class="carousel-prev">‹</button>
-
     <button class="carousel-next">›</button>
 </div>

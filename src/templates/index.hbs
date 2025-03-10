@@ -1,24 +1,39 @@
-{{!-- {{> breadcrumbs}}
-{{> pageLead}}
-{{> lead}}
-{{> hotTopics}}
-{{> audioPlayer}}
-{{> actions}}
-{{> socialLinks}} --}}
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
 
+<body>
+    {{> nav}} {{!-- Menú de navegación --}}
+    {{> header}} {{!-- Encabezado --}}
+    {{> breadcrumbs}} {{!-- Migas de pan --}}
 
-    {{> nav}}
-        {{> breadcrumbs}}
-        {{> header}}
-        {{> pageLead}}
-        {{> lead}}
-        {{> carousel}} 
-        {{> hotTopics}}
-        {{> audioPlayer}}
-        {{> actions}}
-        {{> socialLinks}}
-        {{> footer}}
-        {{> navigation}}
+    <main>
+        {{> pageLead}} {{!-- Sección principal --}}
+        <section class="lead">
+            <div class="carousel">
+                {{#each lead}}
+                <div class="carousel-item {{#if @first}}active{{/if}}">
+                    {{#if image.src}}
+                    <img class="carousel-image" src="{{image.src}}" alt="{{alt}}" width="{{image.width}}"
+                        height="{{image.height}}">
+                    {{/if}}
 
-   
-   
+                    {{#if video.src}}
+                    <iframe class="carousel-video" src="{{video.src}}" frameborder="0" allowfullscreen></iframe>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+            <button class="carousel-prev">‹</button>
+            <button class="carousel-next">›</button>
+        </section>
+
+        {{> hotTopics}} {{!-- Temas destacados --}}
+
+        {{> audioPlayer}} {{!-- Reproductor de audio --}}
+        {{> actions}} {{!-- Botones de compartir --}}
+    </main>
+
+    {{> socialLinks}} {{!-- Redes sociales --}}
+    {{> footer}} {{!-- Pie de página --}}
+</body>

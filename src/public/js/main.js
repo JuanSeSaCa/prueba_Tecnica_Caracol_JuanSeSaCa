@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     let jsonData;
     try {
-        const response = await fetch("/api/data");
+        const response = await fetch("http://localhost:3000/api/data");
         jsonData = await response.json();
         console.log(" Datos cargados desde la API:", jsonData);
     } catch (error) {
@@ -40,24 +40,33 @@ document.addEventListener("DOMContentLoaded", async function () {
     //  Renderizar Lead con Imagen/Video
 
     const leadContainer = document.querySelector("#lead");
-    if (leadContainer && jsonData.lead) {
-        const lead = jsonData.lead[0];
+    if (leadContainer && jsonData.lead?.length > 0) {
+        let content = `
+            <div id="carousel-container" class="carousel">
+                <div class="carousel-inner">
+        `;
 
+        jsonData.lead.forEach((item, index) => {
+            content += `
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                    ${item.image?.src ? `<img src="${item.image.src}" alt="${item.alt}" width="${item.image.width}" height="${item.image.height}">` : ''}
+                    ${item.video?.src ? `<iframe src="${item.video.src}" frameborder="0" allowfullscreen></iframe>` : ''}
+                </div>
+            `;
+        });
 
-        let content = '<div class="lead-media">';
+        content += `
+                </div>
+                <button class="carousel-prev">‹</button>
+                <button class="carousel-next">›</button>
+            </div>
+        `;
 
-        if (lead.video && lead.video.src) {
-            content += `<iframe src="${lead.video.src}" frameborder="0" allowfullscreen></iframe>`;
-        } else if (lead.image && lead.image.src) {
-            content += `<img src="${lead.image.src}" alt="${lead.image.alt || 'Imagen sin descripción'}" width="${lead.image.width || 'auto'}" height="${lead.image.height || 'auto'}">`;
-        } else {
-            content += "<p>⚠️ No hay imagen y/o video disponibles.</p>";
-        }
-
-        content += "</div>";
         leadContainer.innerHTML = content;
+    } else {
+        console.error("⚠️ No se encontraron imágenes o videos en los datos de la API.");
+        leadContainer.innerHTML = "<p>⚠️ No hay contenido disponible.</p>";
     }
-
 
     //  Renderizar Hot Topics
 
@@ -149,9 +158,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         });
     });
-
-    //  Configurar Carrusel de Imágenes/Videos
-
     let index = 0;
     const slides = document.querySelectorAll(".carousel-item");
     const totalSlides = slides.length;
@@ -162,6 +168,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         slides.forEach(slide => (slide.style.display = "none"));
         slides[n].style.display = "block";
 
+        // Si es un video, reiniciarlo al cambiar
         const video = slides[n].querySelector("video");
         if (video) {
             video.currentTime = 0;
@@ -185,36 +192,48 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     showSlide(index);
-    // setInterval(nextSlide, 5000);
-
-     // ☰ Toggle de navegación en móviles
-     const menuToggle = document.querySelector("menu-toggle");
-     const navLinks = document.querySelector(".navigation ul");
- 
-     if (menuToggle) {
-         menuToggle.addEventListener("click", function () => {
-             navLinks.classList.toggle("show");
-         });
-     }
- 
-     // 🔥 Resaltar el enlace activo en la navegación
-     const currentUrl = window.location.href;
-     document.querySelectorAll(".nav-links a").forEach(link => {
-         if (link.href === currentUrl) {
-             link.classList.add("active");
-         }
-     });
- 
-     // 🔄 Cargar datos dinámicos (ejemplo para headline y subHeadline)
-     fetch("/data.json")  // Asegúrate de que esta ruta sirva tu JSON
-         .then(response => response.json())
-         .then(data => {
-             document.querySelector(".headline").textContent = data.headline || "Título no disponible";
-             document.querySelector(".subHeadline").innerHTML = data.subHeadline || "Descripción no disponible";
-         })
-
-         .catch(error => console.error("Error al cargar JSON:", error));
-        
-
-
 });
+
+// 🔹 Auto-play cada 5 segundos 
+// setInterval(nextSlide, 5000);
+
+
+// ☰ Toggle de navegación en móviles
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links"); // Mejor selector
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function () {
+        console.log("🔄 Toggle del menú activado"); // Debug
+        navLinks.classList.toggle("show");
+    });
+} else {
+    console.warn("⚠️ Elementos de navegación no encontrados.");
+}
+// 🔥 Resaltar el enlace activo en la navegación
+const currentUrl = window.location.href;
+document.querySelectorAll(".nav-links a").forEach(link => {
+    if (link.href === currentUrl) {
+        link.classList.add("active");
+    }
+});
+
+// 🔄 Cargar datos dinámicos (ejemplo pa+ra headline y subHeadline)
+fetch("http://localhost:3000/api/data")
+
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        document.querySelector(".headline").textContent = data.headline || "Título no disponible";
+        document.querySelector(".subHeadline").innerHTML = data.subHeadline || "Descripción no disponible";
+    })
+
+    .catch(error => console.error("Error al cargar JSON:", error));
+
+
+
+

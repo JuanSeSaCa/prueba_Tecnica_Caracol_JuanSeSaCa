@@ -1,164 +1,287 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #f9f9f9;
   text-align: center;
   color: #222;
   margin: 0;
   padding: 0;
-  text-decoration:none;
 }
-header {
-  background: #f3f3f3;
-  padding: 10px;
-}
-nav a {
-  color: #002966;
+a {
   text-decoration: none;
-  padding: 5px;
+  color: #1d2329;
+  transition: color 0.3s ease-in-out; /* Efecto suave */
 }
-nav a:hover {
-  text-decoration: underline;
+
+a:hover {
+    color: #f7605a; /* Color cuando pasas el mouse */
+    text-decoration: underline;
 }
-header {
-  background-color:  #f3f3f3;
-  padding: 5px;
-  text-align: center;
+.header {
+  width: 100%;
+  background: #f9f9f9;
+  ;
+  display: flex;
+  flex-direction: column;
 }
-header .logo img {
-  max-width: 150px;
+
+.header .header ul {
+  text-decoration: none;
 }
-header nav {
-  margin-top: 10px;
+a.logo {
+  padding:5px;
 }
-header nav ul {
-  list-style: none;
-  padding: 0;
+.header-top {
+  justify-content:flex-start;
+  margin:5px 15px;
+}
+.header .header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .header-top .nav-container {
+  display: flex;
+  align-items: center;
+
+}
+.nav-container a{
+  gap: 10px;
+}
+
+.nav-container{
+  display: flex;
+  margin:5px 0;
+
+}
+.nav-container img{
+  margin: 0 20px;
+}
+
+.header .header-top .nav-container {
+  background: none;
+  border: none;
+  color: #222;
+  font-size: 20px;
+  cursor: pointer;
+  
+}
+.logo {
+  padding: left 10px;
+  margin: top 3px;
+}
+
+
+/* 
+.header .header-top .nav-container .logo img {
+  max-height: 50px;
+  margin-left: 3px;
+} */
+.topics-container {
+display:flex;
+flex-direction:row;
+flex-wrap:nowrap;
+}
+
+@media (max-width: 768px) {
+  .header .header-top .nav-container .menu-toggle {
+    display: block;
+  }
+}
+
+.header .header-bottom {
+  background: hsl(212, 80%, 60%);
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+}
+
+.header .header-bottom .topics-container {
   display: flex;
   justify-content: center;
+  align-items: space-between;
+  text-decoration: none;
 }
-header nav ul li {
-  margin: 0 15px;
+
+/* 🔹 Estilos generales */
+.navigation {
+  position: relative;
 }
-header nav ul li a {
-  color: white;
-  font-weight: bold;
-  transition: color 0.3s;
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: #222;
+  font-size: 24px;
+  cursor: pointer;
+  display: block; /* Asegura que siempre sea visible */
 }
-header nav ul li a:hover {
-  color: hsl(212, 80%, 60%);
+
+/* 🔴 Ocultar el menú en todas las pantallas por defecto */
+.nav-links  {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  position: STATIC;
+  top: 50px;
+  left: 0;
+  gap: 10px;
+  width: 100%;
+  background: rgb(236, 232, 232);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font:#222;
 }
+
+/* 🔹 Mostrar el menú cuando tenga la clase .show */
+.nav-links.show {
+  display: flex;
+}
+
+/* 🔹 Para pantallas grandes: Mostrar el menú por defecto */
+@media (min-width: 768px) {
+  .nav-links {
+    display: none; /* Mostrar en pantallas grandes */
+    position: static;
+    background: none;
+    box-shadow: none;
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  /* .menu-toggle {
+    display: none; /* Ocultar el botón ☰ en pantallas grandes */
+  /* } */ 
+}
+
+/* 🔹 SOCIAL LINKS */
+.social-links {
+  display: flex;
+  align-items: center;
+}
+
+.social-links a {
+  margin-left: 10px;
+  color: #222;
+  font-size: 20px;
+}
+
+.social-links a:hover {
+  color: #ff6600;
+}
+
 #breadcrumbs {
   padding: 10px 15px;
   background: hsl(212, 80%, 60%);
   color: white;
   text-align: center;
 }
+
 #breadcrumbs a {
   color: white;
   font-weight: bold;
   margin: 0 5px;
 }
-.page-lead {
-  width: 100%;
-  text-align: center;
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 30px;
+  align-items: center;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.page-lead img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-}
+
 .lead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: auto;
+  max-width: 500px;
   overflow: hidden;
 }
-.lead img {
-  display: block !important;
-  visibility: visible !important;
-  max-width: 100%;
-  height: auto;
-}
-.lead .carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.lead .carousel .carousel-item {
-  width: 100%;
+
+.carousel-item {
   display: none;
   text-align: center;
+  width: 100%;
 }
-.lead .carousel .carousel-item.active {
+
+.carousel-item.active {
   display: block;
 }
-.lead .carousel .carousel-item img,
-.lead .carousel .carousel-item iframe {
+
+.carousel img {
   width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 5px;
+  border-radius: 10px;
 }
-.lead button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 50%;
+
+.carousel iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
 }
-.lead button.carousel-prev {
-  left: 10px;
+
+.lead-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
 }
-.lead button.carousel-next {
-  right: 10px;
+
+.headline {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 10px;
 }
-#hotTopics {
-  text-align: center;
-  padding: 20px;
-  text-decoration:none
+
+.subHeadline {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
 }
-#hotTopics h2 {
-  color: #002966;
+
+.audioPlayerContainer {
+  margin-top: 10px;
 }
-#hotTopics ul {
-  list-style: none;
-  padding: 0;
+
+.shareButtons {
+  display: flex;
+  gap: 15px;
 }
-#hotTopics ul li {
-  display: inline;
-  margin: 0 10px;
-}
+
 #audioPlayerContainer {
   text-align: center;
   margin: 20px;
+
+  button {
+      background: blue;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius:5px;
+
+      &:hover {
+          background: darken(blue, 10%);
+      }
+  }
 }
-#audioPlayerContainer button {
-  background: #002966;
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-#audioPlayerContainer button:hover {
-  background: #001433;
-}
-#socialLinks {
-  text-align: center;
-  padding: 20px;
-}
+
 footer {
-  background-color: hsl(212, 80%, 60%);
+  background-color: blue;
   color: white;
   text-align: center;
   padding: 10px;
   margin-top: 20px;
-} 
+}

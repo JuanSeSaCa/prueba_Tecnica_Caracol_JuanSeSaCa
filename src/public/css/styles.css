@@ -291,6 +291,18 @@ a.logo {
   display: block; 
 }
 
+nav.breadcrumbs {
+  display:flex;
+  gap:10px;
+  color:  #222;
+  margin: 20px 40px;
+}
+
+.breadcrumbs a {
+  color: #222;
+  font-style: oblique;
+  font-weight: 600;
+}
 
 #breadcrumbs {
   padding: 10px 15px;

@@ -28,8 +28,8 @@ npm install
 
 ## ** Ejecutar el Servidor Localmente**##
 
-node server/server.js
+npm start
 
-📌 El servidor se ejecutará en:
+ El servidor se ejecutará en:
 ➡ http://localhost:3000/
 

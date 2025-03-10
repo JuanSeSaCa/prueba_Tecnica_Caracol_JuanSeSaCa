@@ -8,18 +8,16 @@ body {
 }
 a {
   text-decoration: none;
-  color: #1d2329;
   transition: color 0.3s ease-in-out; /* Efecto suave */
 }
 
 a:hover {
-    color: #f7605a; /* Color cuando pasas el mouse */
-    text-decoration: underline;
+    color: #c73b65; /* Color cuando pasas el mouse */
+    
 }
 .header {
   width: 100%;
   background: #f9f9f9;
-  ;
   display: flex;
   flex-direction: column;
 }
@@ -47,7 +45,15 @@ a.logo {
 }
 .nav-container a{
   gap: 10px;
+  color: rgb(46, 43, 43);
+  transition: color 0.3s ease-in-out
+} 
+
+
+.nav-container a:hover {
+    color: #c73b65; 
 }
+
 
 .nav-container{
   display: flex;
@@ -82,6 +88,89 @@ display:flex;
 flex-direction:row;
 flex-wrap:nowrap;
 }
+.header-bottom ::marker {
+  display:none
+}
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width:100%;
+  margin: 0 auto;
+  flex-wrap:nowrap;
+}
+
+
+
+.topics-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.topics-container li {
+  list-style-type: none;
+}
+.topics-container {
+  display: flex;
+  align-items: center; 
+  flex-wrap: nowrap; 
+  height: 40px;
+  width:100%;
+}
+
+.hotTopics{
+  display: flex;
+  align-items: center; 
+  flex-wrap: nowrap; 
+  flex-direction:row;
+  height: 40px;
+  gap: 10px;
+  color: white;
+}
+.hotTopics ul {
+   display:flex;
+   flex-direction:row;
+   flex-wrap:nowrap;
+   justify-content:space-evenly;
+   gap: 15px;
+   color: white;
+}
+.hotTopics a {
+  color: white;
+  transition: color 0.3s ease-in-out
+} 
+
+
+.hotTopics a:hover {
+    color: #c73b65; 
+}
+
+.hotTopics li {
+  position: relative;
+  padding-right: 10px;
+}
+
+.hotTopics li::after {
+  content: "|"; 
+  position: absolute;
+  right: 0;
+  color: white;
+}
+
+.hotTopics li:last-child::after {
+  content: ""; 
+}
+
+
+
+.social-links {
+  display: flex;
+  align-items: center; 
+}
+
+
 
 @media (max-width: 768px) {
   .header .header-top .nav-container .menu-toggle {
@@ -99,9 +188,10 @@ flex-wrap:nowrap;
 
 .header .header-bottom .topics-container {
   display: flex;
-  justify-content: center;
-  align-items: space-between;
+  justify-content:space-around;
+  
   text-decoration: none;
+
 }
 
 /* 🔹 Estilos generales */
